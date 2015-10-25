@@ -1,0 +1,44 @@
+package Client;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class EventHandler {
+	ClientGUI view;
+
+	public EventHandler(ClientGUI view) {
+		this.view = view;
+		
+		view.btnConnect.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				startServer();
+			}
+		});
+		view.btnRandom.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		
+		
+		view.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+			//	stopServer();
+			}
+		});
+	}
+
+	private void startServer() {
+		System.out.println("Start server"); // TODO
+	}
+
+	private void stopServer() {
+		System.out.println("End all client connections"); // TODO
+		System.exit(0);
+	}
+}

@@ -1,0 +1,29 @@
+package Server;
+
+import java.net.Socket;
+
+public class ClientConnection {
+	private EventHandler controller;
+	private Socket socket;
+	private String name;
+
+	public ClientConnection(EventHandler controller, Socket socket) {
+		this.controller = controller;
+		this.socket = socket;
+		this.name = socket.getInetAddress().toString(); // default
+	}
+
+	@Override
+	public boolean equals(Object c) {
+		boolean isEqual = false;
+		if (c instanceof ClientConnection) {
+			isEqual = ((ClientConnection) c).name.equals(name);
+		}
+		return isEqual;
+	}
+
+	@Override
+	public String toString() {
+		return name + " (" + socket.getInetAddress().toString() + ")";
+	}
+}

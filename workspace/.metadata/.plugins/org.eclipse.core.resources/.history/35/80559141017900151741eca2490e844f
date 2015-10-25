@@ -1,0 +1,31 @@
+package Client;
+
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.io.Serializable;
+import java.net.Socket;
+
+public class Test implements Serializable {
+
+	public static void main(String[] args) {
+		String a = new String("arsch");
+		try(Socket s = new Socket("localhost", 55555);){
+				 
+				 ObjectOutputStream clientOutputStream = new
+				            ObjectOutputStream(s.getOutputStream());
+				clientOutputStream.writeObject(a);
+				
+				
+					
+		}
+		catch(Exception e){
+			System.out.println(e.toString());
+		}
+		
+
+	}
+
+
+	}
+
+

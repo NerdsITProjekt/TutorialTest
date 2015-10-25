@@ -1,0 +1,43 @@
+package Client;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class EventHandler implements ActionListener {
+ClientGUI view;
+ClientLogic logic;
+public EventHandler(ClientGUI view, ClientLogic logic) {
+this.view = view;
+this.logic = logic;
+// Connect ActionListener to the relevant controls
+view.btnConnect.addActionListener(this);
+view.btnRandom.addActionListener(this);
+//view.txtMessage.addActionListener(this);
+view.frame.addWindowListener(new WindowAdapter() {
+@Override
+public void windowClosing(WindowEvent e) {
+	EventHandler.this.logic.disconnect();
+	System.exit (0);
+}
+});
+}
+/**
+* Determine which control generated the event,
+* and take the appropriate action
+*/
+@Override
+public void actionPerformed(ActionEvent evt) {
+	Object control = evt.getSource();
+	if (control == view.btnConnect) {
+		logic.connect();
+		
+} else {
+System.out .println("Send message");
+}
+}
+}
